@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course</title>
+</head>
+<body>
+<table border="1">
+    <tr th:each="item:${list}">
+        <td th:text="${item.c_name}">course name</td>
+        <td th:text="${item.campus}">campus</td>
+        <td th:text="${item.institution}">institution</td>
+        <td th:text="${item.period}">period</td>
+        <td th:text="${item.category}">category</td>
+    </tr>
+</table>
+</body>
+</html>
