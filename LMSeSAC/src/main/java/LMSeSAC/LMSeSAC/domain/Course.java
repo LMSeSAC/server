@@ -1,19 +1,20 @@
 package LMSeSAC.LMSeSAC.domain;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Getter
 @Setter
-@Document(collection="Course")
+@Document(collection = "Course")
 public class Course {
-    private ObjectId id;
-    private String c_name;
-    private String campus;
-    private String category;
-    private String institution;
-    private String period;
-    private String c_code;
+	private ObjectId _id;
+	private String cname;
+	private String campus;
+	private String category;
+	private String institution;
+	private String period;
+	private String ccode;
 }

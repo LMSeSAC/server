@@ -8,23 +8,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("user")
+@RestController
 public class UserController {
-
     private final UserService userService;
-    private final CourseService courseService;
-
-    @GetMapping("/userid")
-    public String getCourses(Model model) {
-        List<Course> result = courseService.findCourses();
-        System.out.println(result);
-        model.addAttribute("list", result);
-        return "course";
-    }
 
 }
