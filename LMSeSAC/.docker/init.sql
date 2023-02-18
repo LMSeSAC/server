@@ -2,22 +2,23 @@ USE lmsesac;
 ALTER DATABASE lmsesac default charset=utf8 collate utf8_general_ci; 
 
 CREATE TABLE user (
-	id varchar(255) primary key,
+	id int auto_increment primary key,
+	userid varchar(50) not null,
     password varchar(255) not null,
-    name varchar(255) not null,
-    email varchar(255) not null,
+    name varchar(20) not null,
+    email varchar(100) not null,
     phone varchar(13) not null,
     role enum('student', 'teacher') not null,
-    type enum('general', 'google', 'kakao', 'naver') not null
+    type enum('general', 'google', 'kakao', 'naver') not null,
+    createdAt datetime CURRENT_TIMESTAMP
 );
 
 CREATE TABLE course (
 	id int primary key auto_increment,
-    campus enum('ydp', 'ys', 'gd', 'gc', 'dj') not null,
     category enum('app', 'web', 'iot', 'ai', 'bigdata', 'cloud', 'dt', 'fintech', 'ar') not null,
     name varchar(255) not null,
-    institution varchar(255) not null,
-    period varchar(255) not null,
+    startDate date not null,
+    endDate date not null,
     code varchar(255) not null
 );
 

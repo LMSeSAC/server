@@ -1,19 +1,15 @@
 version: "3.8"
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql/mysql-server:latest
     environment:
       MYSQL_ROOT_PASSWORD: lmsesac
       MYSQL_DATABASE: lmsesac
       MYSQL_USER: lmsesac
       MYSQL_PASSWORD: lmsesac
       TZ: Asia/Seoul
-    command: >
-        bash -c "chmod 644 /etc/mysql/conf.d/*.cnf && /entrypoint.sh mysqld"
-    volumes:
-      - ./db/mysql:/var/lib/mysql
-      - ./.docker/utf8.cnf:/etc/mysql/conf.d/utf8.cnf
-      - ./.docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command:
+      - --default-authentication-plugin=mysql_native_password
     ports:
       - "3305:3306"
     restart: always

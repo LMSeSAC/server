@@ -1,8 +1,8 @@
 package LMSeSAC.LMSeSAC.repository;
 
-import LMSeSAC.LMSeSAC.domain.Course;
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CourseRepository extends MongoRepository<Course, ObjectId> {
+import LMSeSAC.LMSeSAC.domain.Course;
+
+public interface CourseRepository extends JpaRepository<Course, Integer> {
 }
