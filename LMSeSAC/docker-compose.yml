@@ -1,9 +1,26 @@
 version: "3.8"
 services:
-  spring:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: lmsesac
+      MYSQL_DATABASE: lmsesac
+      MYSQL_USER: lmsesac
+      MYSQL_PASSWORD: lmsesac
+      TZ: Asia/Seoul
+    command: >
+        bash -c "chmod 644 /etc/mysql/conf.d/*.cnf && /entrypoint.sh mysqld"
     volumes:
-      - .:/app/
-    build:
-      context: .
+      - ./db/mysql:/var/lib/mysql
+      - ./.docker/utf8.cnf:/etc/mysql/conf.d/utf8.cnf
+      - ./.docker/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "8080:8080"
+      - "3305:3306"
+    restart: always
+  # spring:
+  #   volumes:
+  #     - .:/app/
+  #   build:
+  #     context: .
+  #   ports:
+  #     - "8080:8080"
