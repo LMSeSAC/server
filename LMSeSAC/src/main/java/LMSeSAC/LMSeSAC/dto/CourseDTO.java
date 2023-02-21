@@ -20,6 +20,13 @@ public class CourseDTO {
 
 	@Data
 	@Builder
+	public static class SearchRequest {
+		private String name;
+		private int page = 1;
+	}
+
+	@Data
+	@Builder
 	public static class Response {
 		private Integer id;
 		private String name;
