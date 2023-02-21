@@ -13,8 +13,8 @@ public interface CourseMapper extends BasicMapper<CourseDTO, Course> {
 	CourseMapper INSTANCE = Mappers.getMapper(CourseMapper.class);
 
     /*
-    @Mapping(source = "dto._id", target = "_id")
-    @Mapping(source = "dto.cname", target = "cname")
+    @Mapping(source = "dto.id", target = "id")
+    @Mapping(source = "dto.name", target = "name")
     @Mapping(source = "dto.campus", target = "campus")
     @Mapping(source = "dto.category", target = "category")
     @Mapping(source = "dto.institution", target = "institution")
@@ -23,12 +23,13 @@ public interface CourseMapper extends BasicMapper<CourseDTO, Course> {
     Course toEntity(CourseDTO.Request dto, Course course);
     */
 
-	@Mapping(source = "course._id", target = "_id")
-	@Mapping(source = "course.cname", target = "cname")
-	@Mapping(source = "course.campus", target = "campus")
+	@Mapping(source = "course.id", target = "id")
+	@Mapping(source = "course.name", target = "name")
 	@Mapping(source = "course.category", target = "category")
+	@Mapping(source = "course.code", target = "code")
+	@Mapping(source = "course.startDate", target = "startDate")
+	@Mapping(source = "course.endDate", target = "endDate")
 	@Mapping(source = "course.institution", target = "institution")
-	@Mapping(source = "course.period", target = "period")
-	@Mapping(source = "course.ccode", target = "ccode")
+	@Mapping(source = "course.campus", target = "campus")
 	CourseDTO.Response toResponseDto(Course course);
 }

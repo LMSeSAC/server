@@ -2,8 +2,8 @@ package LMSeSAC.LMSeSAC.dto;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
-
+import LMSeSAC.LMSeSAC.domain.Campus;
+import LMSeSAC.LMSeSAC.domain.Institution;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -20,14 +20,22 @@ public class CourseDTO {
 
 	@Data
 	@Builder
+	public static class SearchRequest {
+		private String name;
+		private int page = 1;
+	}
+
+	@Data
+	@Builder
 	public static class Response {
-		private ObjectId _id;
-		private String cname;
-		private String campus;
+		private Integer id;
+		private String name;
 		private String category;
-		private String institution;
-		private String period;
-		private String ccode;
+		private String startDate;
+		private String endDate;
+		private String code;
+		private Institution institution;
+		private Campus campus;
 	}
 
 	@Data

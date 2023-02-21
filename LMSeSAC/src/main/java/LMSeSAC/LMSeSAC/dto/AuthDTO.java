@@ -18,7 +18,7 @@ public class AuthDTO {
 		private String email;
 		 */
 		@NotNull(message = "아이디를 입력해주세요.")
-		private String uid;
+		private String userid;
 
 		@NotNull(message = "비밀번호를 입력해주세요.")
 		@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{8,}",
@@ -34,13 +34,13 @@ public class AuthDTO {
 			message = "이메일 형식에 맞게 입력해주세요.")
 		private String email;
 		@NotNull(message = "아이디를 입력해주세요.")
-		private String uid;
+		private String userid;
 		@NotNull(message = "이름을 입력해주세요.")
-		private String uname;
+		private String name;
 		@NotNull(message = "전화번호를 입력해주세요.")
 		private String phone;
-		private String utype;
-		private String login_type;
+		private String role;
+		private String type;
 		@NotNull(message = "비밀번호를 입력해주세요.")
 		@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{8,}",
 			message = "비밀번호는 영어 소문자, 숫자를 포함하여 최소 8글자 이상이어야 합니다.")
@@ -51,8 +51,8 @@ public class AuthDTO {
 	@Builder
 	public static class Response {
 		private String email;
-		private String uname;
-		private String utype;
+		private String name;
+		private String type;
 
 	}
 }

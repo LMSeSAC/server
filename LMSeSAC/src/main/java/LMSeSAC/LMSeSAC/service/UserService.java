@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import LMSeSAC.LMSeSAC.domain.User;
 import LMSeSAC.LMSeSAC.dto.AuthDTO;
+import LMSeSAC.LMSeSAC.enums.UserRoleEnum;
+import LMSeSAC.LMSeSAC.enums.UserTypeEnum;
 import LMSeSAC.LMSeSAC.exception.ApiException;
 import LMSeSAC.LMSeSAC.exception.ApiExceptionEnum;
 import LMSeSAC.LMSeSAC.mapper.UserMapper;
@@ -24,7 +26,7 @@ public class UserService {
 
 	public User getUserByID(AuthDTO.Request request) {
 		User requestUser = UserMapper.INSTANCE.toEntity(request);
-		Optional<User> user = userRepository.findByUid(requestUser.getUid());
+		Optional<User> user = userRepository.findByUserid(requestUser.getUserid());
 
 		user.orElseThrow(() -> new ApiException(ApiExceptionEnum.LOGIN_FAIL_EXCEPTION));
 
@@ -42,10 +44,8 @@ public class UserService {
 		}
 
 		request.setPassword(passwordEncoder.encode(request.getPassword()));
-		request.setUtype("TEACHER");
-		request.setLogin_type("GENERAL");
 
-		User cUser = UserMapper.INSTANCE.toEntityRegister(request);
+		User cUser = UserMapper.INSTANCE.toEntityRegister(request, UserRoleEnum.teacher, UserTypeEnum.general);
 		return userRepository.save(cUser);
 	}
 }
