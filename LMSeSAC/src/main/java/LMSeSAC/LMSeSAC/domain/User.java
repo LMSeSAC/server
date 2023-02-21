@@ -1,7 +1,9 @@
 package LMSeSAC.LMSeSAC.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,13 +11,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import LMSeSAC.LMSeSAC.enums.UserRoleEnum;
 import LMSeSAC.LMSeSAC.enums.UserTypeEnum;
@@ -50,9 +52,11 @@ public class User {
 	private UserTypeEnum type;
 	@CreationTimestamp
 	private Timestamp createAt;
+	@Column(length = 1)
+	@ColumnDefault("'F'")
+	private String isAdmin;
 
-	@ManyToOne
-	@JsonBackReference
-	@JoinColumn(name = "institution_id")
-	private Institution institution;
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@JsonManagedReference
+	private List<CourseUser> courseUsers;
 }

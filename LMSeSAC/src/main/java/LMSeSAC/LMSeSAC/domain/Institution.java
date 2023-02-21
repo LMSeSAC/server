@@ -36,9 +36,4 @@ public class Institution {
 	@OneToMany(mappedBy = "institution", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JsonManagedReference
 	private List<Course> courses;
-
-	@OneToMany(mappedBy = "institution", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	@JsonManagedReference
-	private List<User> users;
-
 }
