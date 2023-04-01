@@ -49,6 +49,6 @@ public class JwtAuthentication implements Authentication {
 
 	@Override
 	public String getName() {
-		return session.getUserId();
+		return session.getUserid();
 	}
 }

@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-	@Value("${spring.jwt.redis_token_expiration_time")
+	@Value("${spring.jwt.redis_token_expiration_time}")
 	private Long redisTokenExpirationTime;
 	private final PasswordEncoder passwordEncoder;
 

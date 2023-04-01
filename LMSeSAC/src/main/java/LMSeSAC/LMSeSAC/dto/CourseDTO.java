@@ -22,7 +22,7 @@ public class CourseDTO {
 	@Builder
 	public static class SearchRequest {
 		private String name;
-		private int page = 1;
+		private final int page = 1;
 	}
 
 	@Data

@@ -3,7 +3,6 @@ package LMSeSAC.LMSeSAC.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import LMSeSAC.LMSeSAC.utils.JwtProvider;
@@ -24,11 +23,5 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addMapping("/**")
 			.allowedOrigins(originUrl)
 			.allowedMethods("*");
-	}
-
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new UserInterceptor(jwtProvider)).addPathPatterns("/**")
-			.excludePathPatterns(interceptorExcludes);
 	}
 }
