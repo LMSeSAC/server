@@ -9,6 +9,8 @@ import org.mapstruct.factory.Mappers;
 import LMSeSAC.LMSeSAC.domain.User;
 import LMSeSAC.LMSeSAC.dto.AuthDTO;
 import LMSeSAC.LMSeSAC.dto.UserDTO;
+import LMSeSAC.LMSeSAC.enums.UserRoleEnum;
+import LMSeSAC.LMSeSAC.enums.UserTypeEnum;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper extends BasicMapper<AuthDTO, User> {
@@ -16,28 +18,28 @@ public interface UserMapper extends BasicMapper<AuthDTO, User> {
 	UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
 	@Mappings({
-		@Mapping(source = "dto.uid", target = "uid"),
+		@Mapping(source = "dto.userid", target = "userid"),
 		@Mapping(source = "dto.password", target = "password")
 	})
 	User toEntity(AuthDTO.Request dto);
 
 	@Mappings({
-		@Mapping(source = "dto.uid", target = "uid"),
+		@Mapping(source = "dto.userid", target = "userid"),
 		@Mapping(source = "dto.password", target = "password"),
 		@Mapping(source = "dto.email", target = "email"),
-		@Mapping(source = "dto.uname", target = "uname"),
+		@Mapping(source = "dto.name", target = "name"),
 		@Mapping(source = "dto.phone", target = "phone"),
-		@Mapping(source = "dto.login_type", target = "login_type"),
-		@Mapping(source = "dto.utype", target = "utype")
+		@Mapping(source = "type", target = "type"),
+		@Mapping(source = "role", target = "role")
 	})
-	User toEntityRegister(AuthDTO.RegisterRequest dto);
+	User toEntityRegister(AuthDTO.RegisterRequest dto, UserRoleEnum role, UserTypeEnum type);
 
-	@Mapping(source = "user._id", target = "_id")
-	@Mapping(source = "user.uid", target = "uid")
-	@Mapping(source = "user.uname", target = "uname")
+	@Mapping(source = "user.id", target = "id")
+	@Mapping(source = "user.userid", target = "userid")
+	@Mapping(source = "user.name", target = "name")
 	@Mapping(source = "user.email", target = "email")
 	@Mapping(source = "user.phone", target = "phone")
-	@Mapping(source = "user.utype", target = "utype")
-	@Mapping(source = "user.login_type", target = "login_type")
+	@Mapping(source = "user.type", target = "type")
+	@Mapping(source = "user.role", target = "role")
 	UserDTO.Response toResponseDto(User user);
 }

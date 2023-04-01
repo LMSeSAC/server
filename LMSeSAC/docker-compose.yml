@@ -1,9 +1,22 @@
 version: "3.8"
 services:
-  spring:
-    volumes:
-      - .:/app/
-    build:
-      context: .
+  mysql:
+    image: mysql/mysql-server:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: lmsesac
+      MYSQL_DATABASE: lmsesac
+      MYSQL_USER: lmsesac
+      MYSQL_PASSWORD: lmsesac
+      TZ: Asia/Seoul
+    command:
+      - --default-authentication-plugin=mysql_native_password
     ports:
-      - "8080:8080"
+      - "3305:3306"
+    restart: always
+  # spring:
+  #   volumes:
+  #     - .:/app/
+  #   build:
+  #     context: .
+  #   ports:
+  #     - "8080:8080"
