@@ -23,7 +23,14 @@ public enum ApiExceptionEnum {
 	USER_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "올바른 유저를 찾을 수 없습니다."),
 	LOGIN_FAIL_EXCEPTION(HttpStatus.NOT_FOUND, "아이디 또는 비밀번호가 틀립니다."),
 	EMAIL_DUPLICATION_EXCEPTION(HttpStatus.NOT_FOUND, "중복된 이메일입니다."),
-	COURSE_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당하는 강좌를 찾을 수 없습니다.");
+	COURSE_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당하는 강좌를 찾을 수 없습니다."),
+
+	// Token Exception
+	EXPIRED_TOKEN_EXCEPTION(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다."),
+	EXPIRED_REFRESH_TOKEN_EXCEPTION(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다. 회원가입을 다시 시도하십시오."),
+	NO_EXPIRED_TOKEN_EXCEPTION(HttpStatus.BAD_REQUEST, "만료되지 않은 토큰입니다."),
+	MALFORED_TOKEN_EXCEPTION(HttpStatus.BAD_REQUEST, "위조된 토큰입니다."),
+	NOT_FOUND_TOKEN_EXCEPTION(HttpStatus.NOT_FOUND, "비어있는 토큰입니다.");
 	private final HttpStatus httpStatus;
 	private final Integer status;
 	private final String message;

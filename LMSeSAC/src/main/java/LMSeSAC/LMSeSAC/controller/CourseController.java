@@ -1,5 +1,6 @@
 package LMSeSAC.LMSeSAC.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("course")
 public class CourseController {
 
+	@Autowired
 	private final CourseService courseService;
 
 	@GetMapping("/all")

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CourseService {
 
+	@Autowired
 	private final CourseRepository courseRepository;
 
 	public CourseDTO.SearchResponse findCourses() {
@@ -46,7 +48,7 @@ public class CourseService {
 	public CourseDTO.SearchResponse search(CourseDTO.SearchRequest request) {
 		Pageable page = PageRequest.of(request.getPage() - 1, 12, Sort.by("id").descending());
 		Page<Course> courses =
-			courseRepository.findAllByCourseContaining(request.getName(), page);
+			courseRepository.findAllByNameContaining(request.getName(), page);
 		List<CourseDTO.Response> courseList = new ArrayList<>();
 
 		courses.forEach(course -> courseList.add(CourseMapper.INSTANCE.toResponseDto(course)));
