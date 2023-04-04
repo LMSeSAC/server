@@ -15,4 +15,14 @@ public class UserDTO {
 		private String type;
 		private String role;
 	}
+
+	@Data
+	@Builder
+	public static class AuthResponse {
+		private int id;
+		private String userid;
+		private String name;
+		private String accessToken;
+		private String refreshToken;
+	}
 }

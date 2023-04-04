@@ -9,6 +9,7 @@ import org.mapstruct.factory.Mappers;
 import LMSeSAC.LMSeSAC.domain.User;
 import LMSeSAC.LMSeSAC.dto.AuthDTO;
 import LMSeSAC.LMSeSAC.dto.UserDTO;
+import LMSeSAC.LMSeSAC.dto.auth.Token;
 import LMSeSAC.LMSeSAC.enums.UserRoleEnum;
 import LMSeSAC.LMSeSAC.enums.UserTypeEnum;
 
@@ -42,4 +43,11 @@ public interface UserMapper extends BasicMapper<AuthDTO, User> {
 	@Mapping(source = "user.type", target = "type")
 	@Mapping(source = "user.role", target = "role")
 	UserDTO.Response toResponseDto(User user);
+
+	@Mapping(source = "user.id", target = "id")
+	@Mapping(source = "user.name", target = "name")
+	@Mapping(source = "user.userid", target = "userid")
+	@Mapping(source = "token.accessToken", target = "accessToken")
+	@Mapping(source = "token.refreshToken", target = "refreshToken")
+	UserDTO.AuthResponse toAuthResponseDto(User user, Token token);
 }

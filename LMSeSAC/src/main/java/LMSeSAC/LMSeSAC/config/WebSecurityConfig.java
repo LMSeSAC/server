@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			configuration.addAllowedOriginPattern(originUrl);
 			configuration.addAllowedHeader("*");
 			configuration.addAllowedMethod("*");
+			configuration.setAllowCredentials(true);
 
 			return configuration;
 		});

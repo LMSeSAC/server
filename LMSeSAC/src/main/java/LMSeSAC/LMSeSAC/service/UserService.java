@@ -45,7 +45,7 @@ public class UserService {
 
 		request.setPassword(passwordEncoder.encode(request.getPassword()));
 
-		User cUser = UserMapper.INSTANCE.toEntityRegister(request, UserRoleEnum.teacher, UserTypeEnum.general);
+		User cUser = UserMapper.INSTANCE.toEntityRegister(request, UserRoleEnum.student, UserTypeEnum.general);
 		return userRepository.save(cUser);
 	}
 }

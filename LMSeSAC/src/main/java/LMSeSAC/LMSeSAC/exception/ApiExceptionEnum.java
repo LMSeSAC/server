@@ -20,10 +20,10 @@ public enum ApiExceptionEnum {
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버가 응답하지 않습니다."),
 
 	// Custom Exception
-	USER_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "올바른 유저를 찾을 수 없습니다."),
-	LOGIN_FAIL_EXCEPTION(HttpStatus.NOT_FOUND, "아이디 또는 비밀번호가 틀립니다."),
-	EMAIL_DUPLICATION_EXCEPTION(HttpStatus.NOT_FOUND, "중복된 이메일입니다."),
-	COURSE_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당하는 강좌를 찾을 수 없습니다."),
+	USER_NOT_FOUND_EXCEPTION(HttpStatus.BAD_REQUEST, "올바른 유저를 찾을 수 없습니다."),
+	LOGIN_FAIL_EXCEPTION(HttpStatus.BAD_REQUEST, "아이디 또는 비밀번호가 틀립니다."),
+	EMAIL_DUPLICATION_EXCEPTION(HttpStatus.BAD_REQUEST, "중복된 이메일입니다."),
+	COURSE_NOT_FOUND_EXCEPTION(HttpStatus.BAD_REQUEST, "해당하는 강좌를 찾을 수 없습니다."),
 
 	// Token Exception
 	EXPIRED_TOKEN_EXCEPTION(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다."),
